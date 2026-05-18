@@ -1,0 +1,1033 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leandro Hidalgo — Desarrollador Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --accent: #1d9e75;
+        --accent-light: #e1f5ee;
+        --accent-mid: #5dcaa5;
+        --text: #1a1a18;
+        --muted: #6b6b67;
+        --muted2: #9b9b96;
+        --border: rgba(0, 0, 0, 0.1);
+        --bg: #ffffff;
+        --bg2: #f7f7f4;
+        --bg3: #f1f1ec;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --text: #e8e8e2;
+          --muted: #9b9b96;
+          --muted2: #6b6b67;
+          --border: rgba(255, 255, 255, 0.1);
+          --bg: #141412;
+          --bg2: #1c1c19;
+          --bg3: #222220;
+          --accent-light: #04342c;
+          --accent-mid: #0f6e56;
+        }
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        font-weight: 400;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      /* NAV */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--bg);
+        border-bottom: 0.5px solid var(--border);
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 56px;
+      }
+
+      .nav-logo {
+        font-family: "DM Serif Display", serif;
+        font-size: 17px;
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      .nav-logo em {
+        font-style: italic;
+        color: var(--accent);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      .nav-cta {
+        font-family: "DM Mono", monospace;
+        font-size: 11px !important;
+        background: var(--accent-light);
+        color: var(--accent) !important;
+        padding: 5px 12px;
+        border-radius: 20px;
+      }
+
+      /* MAIN LAYOUT */
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* HERO */
+      .hero {
+        padding: 5rem 0 4rem;
+        border-bottom: 0.5px solid var(--border);
+      }
+
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: "DM Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+        background: var(--accent-light);
+        padding: 4px 12px;
+        border-radius: 20px;
+        margin-bottom: 1.75rem;
+        text-transform: uppercase;
+      }
+
+      .hero-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(40px, 7vw, 64px);
+        font-weight: 400;
+        line-height: 1.05;
+        margin-bottom: 1.25rem;
+        letter-spacing: -0.01em;
+      }
+
+      .hero h1 em {
+        font-style: italic;
+        color: var(--accent);
+      }
+
+      .hero-desc {
+        font-size: 16px;
+        color: var(--muted);
+        font-weight: 300;
+        max-width: 500px;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .hero-location {
+        font-size: 13px;
+        color: var(--muted2);
+        font-family: "DM Mono", monospace;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 400;
+        text-decoration: none;
+        padding: 8px 18px;
+        border-radius: 20px;
+        transition:
+          opacity 0.2s,
+          transform 0.15s;
+      }
+
+      .btn:hover {
+        opacity: 0.8;
+        transform: translateY(-1px);
+      }
+      .btn:active {
+        transform: scale(0.98);
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      .btn-ghost {
+        background: var(--bg2);
+        color: var(--text);
+        border: 0.5px solid var(--border);
+      }
+
+      /* SECTIONS */
+      section {
+        padding: 4rem 0;
+        border-bottom: 0.5px solid var(--border);
+      }
+
+      section:last-of-type {
+        border-bottom: none;
+      }
+
+      .section-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "DM Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted2);
+        margin-bottom: 2rem;
+      }
+
+      .section-label::after {
+        content: "";
+        flex: 1;
+        height: 0.5px;
+        background: var(--border);
+      }
+
+      /* PROJECTS */
+      .projects-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .project-card {
+        background: var(--bg);
+        border: 0.5px solid var(--border);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+      }
+
+      .project-card:hover {
+        border-color: var(--accent-mid);
+        transform: translateY(-2px);
+      }
+
+      .project-inner {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        align-items: start;
+      }
+
+      .project-num {
+        font-family: "DM Mono", monospace;
+        font-size: 10px;
+        color: var(--muted2);
+        letter-spacing: 0.1em;
+        margin-bottom: 8px;
+      }
+
+      .project-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 6px;
+        line-height: 1.2;
+      }
+
+      .project-subtitle {
+        font-size: 12px;
+        font-family: "DM Mono", monospace;
+        color: var(--accent);
+        margin-bottom: 10px;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+      }
+
+      .project-desc {
+        font-size: 14px;
+        color: var(--muted);
+        font-weight: 300;
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-bottom: 1rem;
+      }
+
+      .tag {
+        font-family: "DM Mono", monospace;
+        font-size: 10px;
+        padding: 3px 9px;
+        border-radius: 10px;
+        background: var(--bg2);
+        color: var(--muted);
+        border: 0.5px solid var(--border);
+      }
+
+      .project-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 12px;
+        font-weight: 400;
+        text-decoration: none;
+        color: var(--accent);
+        border: 0.5px solid var(--accent-mid);
+        background: var(--accent-light);
+        padding: 5px 12px;
+        border-radius: 20px;
+        transition: opacity 0.2s;
+      }
+
+      .project-link:hover {
+        opacity: 0.75;
+      }
+
+      .project-badge {
+        font-family: "DM Mono", monospace;
+        font-size: 10px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        white-space: nowrap;
+        align-self: start;
+      }
+
+      .badge-dev {
+        background: var(--bg3);
+        color: var(--muted2);
+        border: 0.5px solid var(--border);
+      }
+
+      .badge-done {
+        background: var(--accent-light);
+        color: var(--accent);
+      }
+
+      .project-code {
+        background: var(--bg2);
+        border-top: 0.5px solid var(--border);
+        padding: 1rem 1.5rem;
+        font-family: "DM Mono", monospace;
+        font-size: 11px;
+        color: var(--muted);
+        line-height: 1.6;
+        overflow-x: auto;
+      }
+
+      .code-line {
+        white-space: pre;
+      }
+      .code-green {
+        color: var(--accent);
+      }
+      .code-dim {
+        color: var(--muted2);
+      }
+
+      /* BRAND PROJECT special */
+      .brand-preview {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--bg2);
+        border-top: 0.5px solid var(--border);
+        padding: 2rem;
+      }
+
+      .brand-logo-box {
+        width: 80px;
+        height: 80px;
+        background: var(--bg3);
+        border-radius: var(--radius-md);
+        border: 0.5px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "DM Serif Display", serif;
+        font-size: 11px;
+        color: var(--muted2);
+        text-align: center;
+        font-style: italic;
+      }
+
+      /* SKILLS */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 10px;
+      }
+
+      .skill-group {
+        background: var(--bg2);
+        border-radius: var(--radius-md);
+        padding: 14px 16px;
+      }
+
+      .skill-group-title {
+        font-family: "DM Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted2);
+        margin-bottom: 10px;
+      }
+
+      .skill-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      .chip {
+        font-size: 12px;
+        font-weight: 400;
+        padding: 3px 9px;
+        border-radius: 8px;
+        background: var(--bg);
+        color: var(--text);
+        border: 0.5px solid var(--border);
+      }
+
+      /* ABOUT */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      @media (max-width: 540px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .project-inner {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .about-col-title {
+        font-family: "DM Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted2);
+        margin-bottom: 12px;
+      }
+
+      .edu-item {
+        display: flex;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom: 0.5px solid var(--border);
+      }
+
+      .edu-item:last-child {
+        border-bottom: none;
+      }
+
+      .edu-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        margin-top: 5px;
+      }
+
+      .edu-name {
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 2px;
+      }
+      .edu-sub {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .lang-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 0.5px solid var(--border);
+        font-size: 13px;
+      }
+
+      .lang-row:last-child {
+        border-bottom: none;
+      }
+
+      .lang-level {
+        font-family: "DM Mono", monospace;
+        font-size: 10px;
+        background: var(--accent-light);
+        color: var(--accent);
+        padding: 2px 8px;
+        border-radius: 10px;
+      }
+
+      /* CERTS */
+      .certs-list {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .cert-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--muted);
+        padding: 10px 14px;
+        background: var(--bg2);
+        border-radius: var(--radius-md);
+      }
+
+      .cert-year {
+        font-family: "DM Mono", monospace;
+        font-size: 10px;
+        color: var(--muted2);
+        margin-left: auto;
+      }
+
+      .cert-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex-shrink: 0;
+      }
+
+      /* FOOTER */
+      footer {
+        padding: 3rem 2rem;
+        text-align: center;
+        border-top: 0.5px solid var(--border);
+      }
+
+      .footer-name {
+        font-family: "DM Serif Display", serif;
+        font-size: 22px;
+        font-weight: 400;
+        margin-bottom: 6px;
+      }
+
+      .footer-name em {
+        font-style: italic;
+        color: var(--accent);
+      }
+
+      .footer-sub {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 2rem;
+      }
+
+      .footer-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 12px;
+        font-family: "DM Mono", monospace;
+        color: var(--muted);
+        text-decoration: none;
+        background: var(--bg2);
+        border: 0.5px solid var(--border);
+        padding: 6px 14px;
+        border-radius: 20px;
+        transition: color 0.2s;
+      }
+
+      .footer-link:hover {
+        color: var(--accent);
+        border-color: var(--accent-mid);
+      }
+
+      .footer-copy {
+        font-family: "DM Mono", monospace;
+        font-size: 10px;
+        color: var(--muted2);
+        letter-spacing: 0.06em;
+      }
+
+      /* SVG icons inline */
+      .icon {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+      }
+
+      @media (max-width: 600px) {
+        nav {
+          padding: 0 1rem;
+        }
+        main {
+          padding: 0 1.25rem;
+        }
+        .hero {
+          padding: 3rem 0 2.5rem;
+        }
+        section {
+          padding: 2.5rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="nav-logo">L. <em>Hidalgo</em></a>
+      <ul class="nav-links">
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li>
+          <a href="https://github.com/l34n-exe" target="_blank" rel="noopener"
+            >GitHub</a
+          >
+        </li>
+        <li>
+          <a href="mailto:leandrohidalgo35@gmail.com" class="nav-cta"
+            >Contacto</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <!-- HERO -->
+      <div class="hero">
+        <div class="hero-tag">
+          <span class="hero-dot"></span>
+          disponible para proyectos
+        </div>
+        <h1>Leandro <em>Hidalgo</em></h1>
+        <p class="hero-desc">
+          Estudiante de Tecnicatura en Desarrollo Web en CURZA. Construyo
+          sistemas con Python, Django, Flask y Vue.js — del backend a la
+          interfaz.
+        </p>
+        <div class="hero-meta">
+          <span class="hero-location">Viedma, Río Negro — AR</span>
+          <div class="hero-actions">
+            <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+            <a
+              href="https://github.com/l34n-exe"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-ghost"
+              >GitHub</a
+            >
+            <a href="mailto:leandrohidalgo35@gmail.com" class="btn btn-ghost"
+              >leandrohidalgo35@gmail.com</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECTS -->
+      <section id="proyectos">
+        <div class="section-label">proyectos</div>
+        <div class="projects-list">
+          <!-- Proyecto 1 -->
+          <div class="project-card">
+            <div class="project-inner">
+              <div>
+                <div class="project-num">01 — Desarrollo Web</div>
+                <div class="project-title">
+                  Sistema de Gestión para Heladería
+                </div>
+                <div class="project-subtitle">Flask + Vue.js</div>
+                <p class="project-desc">
+                  Aplicación full stack para gestión de stock, productos y
+                  ventas. API REST con Flask y frontend en Vue.js con
+                  operaciones CRUD completas e integración de base de datos
+                  relacional.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">Flask</span>
+                  <span class="tag">Vue.js</span>
+                  <span class="tag">API REST</span>
+                  <span class="tag">MySQL</span>
+                  <span class="tag">Python</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/CURZA-PWD2025/pwd2025-tp-final-l34n-exe"
+                    target="_blank"
+                    rel="noopener"
+                    class="project-link"
+                  >
+                    Ver en GitHub ↗
+                  </a>
+                </div>
+              </div>
+              <span class="project-badge badge-done">Finalizado</span>
+            </div>
+            <div class="project-code">
+              <div class="code-line">
+                <span class="code-dim">from</span>
+                <span class="code-green">flask</span>
+                <span class="code-dim">import</span> Flask, jsonify
+              </div>
+              <div class="code-line"></div>
+              <div class="code-line">
+                <span class="code-dim"
+                  ># GET /api/ventas/ → lista + filtros</span
+                >
+              </div>
+              <div class="code-line">
+                <span class="code-green">@app</span>.route(<span
+                  class="code-green"
+                  >'/api/stock/'</span
+                >, methods=[<span class="code-green">'GET'</span>])
+              </div>
+              <div class="code-line">
+                <span class="code-dim">def</span>
+                <span class="code-green">get_stock</span>():
+              </div>
+              <div class="code-line">productos = Producto.query.all()</div>
+              <div class="code-line">
+                <span class="code-dim">return</span> jsonify([p.to_dict()
+                <span class="code-dim">for</span> p
+                <span class="code-dim">in</span> productos])
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 2 -->
+          <div class="project-card">
+            <div class="project-inner">
+              <div>
+                <div class="project-num">02 — Desarrollo Web</div>
+                <div class="project-title">
+                  Gestión de Heladería
+                  <em style="font-style: italic; color: var(--accent)">DRF</em>
+                </div>
+                <div class="project-subtitle">
+                  Django REST Framework + Vue.js
+                </div>
+                <p class="project-desc">
+                  Segunda versión del sistema con Django REST Framework.
+                  Arquitectura cliente-servidor con API REST, gestión de stock,
+                  registro de ventas y panel de administración.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">Django</span>
+                  <span class="tag">DRF</span>
+                  <span class="tag">Vue.js</span>
+                  <span class="tag">API REST</span>
+                  <span class="tag">PostgreSQL</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/l34n-exe/heladeriadjango"
+                    target="_blank"
+                    rel="noopener"
+                    class="project-link"
+                  >
+                    Ver en GitHub ↗
+                  </a>
+                </div>
+              </div>
+              <span class="project-badge badge-dev">En desarrollo</span>
+            </div>
+            <div class="project-code">
+              <div class="code-line">
+                <span class="code-dim">from</span>
+                <span class="code-green">rest_framework</span>
+                <span class="code-dim">import</span> viewsets
+              </div>
+              <div class="code-line">
+                <span class="code-dim">from</span> .models
+                <span class="code-dim">import</span> Producto, Venta
+              </div>
+              <div class="code-line"></div>
+              <div class="code-line">
+                <span class="code-dim">class</span>
+                <span class="code-green">ProductoViewSet</span
+                >(viewsets.ModelViewSet):
+              </div>
+              <div class="code-line">queryset = Producto.objects.all()</div>
+              <div class="code-line">serializer_class = ProductoSerializer</div>
+            </div>
+          </div>
+
+          <!-- Proyecto 3 -->
+          <div class="project-card">
+            <div class="project-inner">
+              <div>
+                <div class="project-num">03 — Diseño</div>
+                <div class="project-title">Manual de Marca — Tienda Retro</div>
+                <div class="project-subtitle">Identidad Visual Completa</div>
+                <p class="project-desc">
+                  Identidad visual completa para una tienda de objetos retro.
+                  Incluye sistema de color, tipografía, aplicaciones de marca y
+                  guía de estilos con lineamientos de uso.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">Branding</span>
+                  <span class="tag">Identidad Visual</span>
+                  <span class="tag">UX/UI</span>
+                  <span class="tag">Inkscape</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://drive.google.com/drive/folders/1T20RRCB1d5iORQlYzW4Tdj5gFHcyGEzg?usp=sharing"
+                    target="_blank"
+                    rel="noopener"
+                    class="project-link"
+                  >
+                    Ver en Drive ↗
+                  </a>
+                </div>
+              </div>
+              <span class="project-badge badge-done">Finalizado</span>
+            </div>
+            <div class="brand-preview">
+              <img
+                src="https://l34n-exe.github.io/LogoPunto3.svg"
+                alt="Logo Punto 3 — Tienda Retro"
+                style="
+                  max-height: 72px;
+                  max-width: 180px;
+                  object-fit: contain;
+                  opacity: 0.9;
+                "
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <div class="brand-logo-box" style="display: none">
+                Logo<br />Proyecto
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="habilidades">
+        <div class="section-label">habilidades</div>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <div class="skill-group-title">Lenguajes</div>
+            <div class="skill-chips">
+              <span class="chip">Python</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">C</span>
+              <span class="chip">C++</span>
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Frameworks</div>
+            <div class="skill-chips">
+              <span class="chip">Django REST</span>
+              <span class="chip">Flask</span>
+              <span class="chip">Vue.js</span>
+              <span class="chip">Docker</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Bases de datos</div>
+            <div class="skill-chips">
+              <span class="chip">MySQL</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">SQL</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Herramientas</div>
+            <div class="skill-chips">
+              <span class="chip">Git</span>
+              <span class="chip">Postman</span>
+              <span class="chip">UML</span>
+              <span class="chip">UX/UI</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="sobre-mi">
+        <div class="section-label">sobre mí</div>
+        <div class="about-grid">
+          <div>
+            <div class="about-col-title">Educación</div>
+            <div class="edu-item">
+              <div class="edu-dot" style="background: var(--accent)"></div>
+              <div>
+                <div class="edu-name">Tecnicatura en Desarrollo Web</div>
+                <div class="edu-sub">CURZA · 2022 – Actualidad</div>
+              </div>
+            </div>
+            <div class="edu-item">
+              <div class="edu-dot" style="background: var(--muted2)"></div>
+              <div>
+                <div class="edu-name">Licenciatura en Sistemas</div>
+                <div class="edu-sub">UNRN · 2017 – 2021 · Incompleta</div>
+              </div>
+            </div>
+
+            <div class="about-col-title" style="margin-top: 1.75rem">
+              Idiomas
+            </div>
+            <div class="lang-row">
+              Inglés <span class="lang-level">C1</span>
+            </div>
+            <div class="lang-row">
+              Italiano <span class="lang-level">A2</span>
+            </div>
+            <div class="lang-row">
+              Portugués <span class="lang-level">A2</span>
+            </div>
+            <div class="lang-row">
+              Francés <span class="lang-level">A2</span>
+            </div>
+          </div>
+          <div>
+            <div class="about-col-title">Certificados</div>
+            <div class="certs-list">
+              <div class="cert-item">
+                <div class="cert-dot"></div>
+                Argentina Programar: #SéProgramar
+                <span class="cert-year">2022</span>
+              </div>
+              <div class="cert-item">
+                <div class="cert-dot"></div>
+                Excel
+                <span class="cert-year">2025</span>
+              </div>
+              <div class="cert-item">
+                <div class="cert-dot"></div>
+                Iniciación al Desarrollo con IA
+                <span class="cert-year">2026</span>
+              </div>
+              <div class="cert-item">
+                <div class="cert-dot"></div>
+                SEO para IA y Google
+                <span class="cert-year">2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-name">Leandro <em>Hidalgo</em></div>
+      <div class="footer-sub">Desarrollador Web · Viedma, Río Negro</div>
+      <div class="footer-links">
+        <a href="mailto:leandrohidalgo35@gmail.com" class="footer-link">
+          leandrohidalgo35@gmail.com
+        </a>
+        <a href="tel:2920574837" class="footer-link"> 2920 57-4837 </a>
+        <a
+          href="https://github.com/l34n-exe"
+          target="_blank"
+          rel="noopener"
+          class="footer-link"
+        >
+          github.com/l34n-exe
+        </a>
+      </div>
+      <div class="footer-copy">© 2025 Leandro Hidalgo — Viedma, Río Negro</div>
+    </footer>
+  </body>
+</html>
