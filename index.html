@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leandro Hidalgo — Desarrollador Web</title>
+    <meta
+      name="description"
+      content="Leandro Hidalgo, desarrollador web en Viedma, Río Negro. Estudiante de Tecnicatura en Desarrollo Web (CURZA). Proyectos con Python, Django, Flask y Vue.js."
+    />
+    <meta property="og:title" content="Leandro Hidalgo — Desarrollador Web" />
+    <meta
+      property="og:description"
+      content="Portfolio de Leandro Hidalgo: proyectos full stack con Python, Django, Flask y Vue.js, además de identidad visual y branding."
+    />
+    <meta property="og:type" content="website" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -25,7 +35,7 @@
         --accent-mid: #5dcaa5;
         --text: #1a1a18;
         --muted: #6b6b67;
-        --muted2: #9b9b96;
+        --muted2: #75756f;
         --border: rgba(0, 0, 0, 0.1);
         --bg: #ffffff;
         --bg2: #f7f7f4;
@@ -38,7 +48,7 @@
         :root {
           --text: #e8e8e2;
           --muted: #9b9b96;
-          --muted2: #6b6b67;
+          --muted2: #a8a8a2;
           --border: rgba(255, 255, 255, 0.1);
           --bg: #141412;
           --bg2: #1c1c19;
@@ -424,17 +434,16 @@
       .brand-logo-box {
         width: 80px;
         height: 80px;
-        background: var(--bg3);
+        background: linear-gradient(135deg, var(--accent-light), var(--bg3));
         border-radius: var(--radius-md);
-        border: 0.5px solid var(--border);
+        border: 0.5px solid var(--accent-mid);
         display: flex;
         align-items: center;
         justify-content: center;
         font-family: "DM Serif Display", serif;
-        font-size: 11px;
-        color: var(--muted2);
-        text-align: center;
+        font-size: 22px;
         font-style: italic;
+        color: var(--accent);
       }
 
       /* SKILLS */
@@ -476,6 +485,15 @@
       }
 
       /* ABOUT */
+      .about-intro {
+        font-size: 14px;
+        color: var(--muted);
+        font-weight: 300;
+        max-width: 620px;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+      }
+
       .about-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -569,11 +587,21 @@
         border-radius: var(--radius-md);
       }
 
+      .cert-name {
+        color: var(--text);
+      }
+
+      .cert-org {
+        font-size: 11px;
+        color: var(--muted2);
+      }
+
       .cert-year {
         font-family: "DM Mono", monospace;
         font-size: 10px;
         color: var(--muted2);
         margin-left: auto;
+        white-space: nowrap;
       }
 
       .cert-dot {
@@ -892,9 +920,63 @@
                   this.nextElementSibling.style.display = 'flex';
                 "
               />
-              <div class="brand-logo-box" style="display: none">
-                Logo<br />Proyecto
+              <div class="brand-logo-box" style="display: none">P3</div>
+            </div>
+          </div>
+
+          <!-- Proyecto 4 -->
+          <div class="project-card">
+            <div class="project-inner">
+              <div>
+                <div class="project-num">04 — Herramienta Web</div>
+                <div class="project-title">CSV → Everything</div>
+                <div class="project-subtitle">JavaScript + PapaParse</div>
+                <p class="project-desc">
+                  Conversor de CSV a JSON, NDJSON, YAML, SQL (INSERT) y TSV.
+                  Detección automática de delimitador, inferencia de tipos y
+                  soporte para claves anidadas. Todo el procesamiento ocurre en
+                  el navegador, sin subir archivos a ningún servidor.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">PapaParse</span>
+                  <span class="tag">CSV</span>
+                  <span class="tag">JSON</span>
+                  <span class="tag">YAML</span>
+                  <span class="tag">Netlify</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://csvtoeverything.netlify.app/"
+                    target="_blank"
+                    rel="noopener"
+                    class="project-link"
+                  >
+                    Ver demo ↗
+                  </a>
+                </div>
               </div>
+              <span class="project-badge badge-done">Finalizado</span>
+            </div>
+            <div class="project-code">
+              <div class="code-line">
+                <span class="code-dim">import</span> Papa
+                <span class="code-dim">from</span>
+                <span class="code-green">'papaparse'</span>;
+              </div>
+              <div class="code-line"></div>
+              <div class="code-line">
+                <span class="code-dim"># parseo con delimitador auto</span>
+              </div>
+              <div class="code-line">
+                <span class="code-dim">const</span> { data } =
+                Papa.parse(csvText, {
+              </div>
+              <div class="code-line">
+                header: <span class="code-green">true</span>,
+              </div>
+              <div class="code-line">dynamicTyping: inferTypes,</div>
+              <div class="code-line">});</div>
             </div>
           </div>
         </div>
@@ -947,6 +1029,13 @@
       <!-- ABOUT -->
       <section id="sobre-mi">
         <div class="section-label">sobre mí</div>
+        <p class="about-intro">
+          Estudiante de la Tecnicatura en Desarrollo Web en CURZA, con foco en
+          construir aplicaciones full stack de punta a punta: modelado de datos,
+          API REST y frontend funcional. Además de programar, me interesa el
+          diseño de producto y la identidad visual, y vengo sumando formación en
+          herramientas de IA aplicadas al desarrollo.
+        </p>
         <div class="about-grid">
           <div>
             <div class="about-col-title">Educación</div>
@@ -986,23 +1075,65 @@
             <div class="certs-list">
               <div class="cert-item">
                 <div class="cert-dot"></div>
-                Argentina Programar: #SéProgramar
-                <span class="cert-year">2022</span>
+                <div>
+                  <div class="cert-name">Argentina Programa: #SéProgramar</div>
+                  <div class="cert-org">CESSI Argentina</div>
+                </div>
+                <span class="cert-year">abr 2022</span>
               </div>
               <div class="cert-item">
                 <div class="cert-dot"></div>
-                Excel
-                <span class="cert-year">2025</span>
+                <div>
+                  <div class="cert-name">Excel</div>
+                  <div class="cert-org">8 hs · 2 módulos</div>
+                </div>
+                <span class="cert-year">may 2025</span>
               </div>
               <div class="cert-item">
                 <div class="cert-dot"></div>
-                Iniciación al Desarrollo con IA
-                <span class="cert-year">2026</span>
+                <div>
+                  <div class="cert-name">
+                    Desarrollo con IA: de 0 a Producción
+                  </div>
+                  <div class="cert-org">BIG school</div>
+                </div>
+                <span class="cert-year">abr 2026</span>
               </div>
               <div class="cert-item">
                 <div class="cert-dot"></div>
-                SEO para IA y Google
-                <span class="cert-year">2026</span>
+                <div>
+                  <div class="cert-name">SEO para IA y Google</div>
+                  <div class="cert-org">BIG school</div>
+                </div>
+                <span class="cert-year">may 2026</span>
+              </div>
+              <div class="cert-item">
+                <div class="cert-dot"></div>
+                <div>
+                  <div class="cert-name">Curso de IA: de 0 a Agentes</div>
+                  <div class="cert-org">BIG school</div>
+                </div>
+                <span class="cert-year">may 2026</span>
+              </div>
+              <div class="cert-item">
+                <div class="cert-dot"></div>
+                <div>
+                  <div class="cert-name">
+                    Desarrollo con IA: Programa con Agentes
+                  </div>
+                  <div class="cert-org">BIG school · mouredev</div>
+                </div>
+                <span class="cert-year">jun 2026</span>
+              </div>
+              <div class="cert-item">
+                <div class="cert-dot"></div>
+                <div>
+                  <div class="cert-name">
+                    Inglés — Nivel 9, Avanzado 1 (Pre C1)
+                  </div>
+                  <div class="cert-org">Edusoft · Programa Río Negro</div>
+                </div>
+                <span class="cert-year">jul 2026</span>
               </div>
             </div>
           </div>
@@ -1027,7 +1158,15 @@
           github.com/l34n-exe
         </a>
       </div>
-      <div class="footer-copy">© 2025 Leandro Hidalgo — Viedma, Río Negro</div>
+      <div class="footer-copy" id="footer-year">
+        © 2026 Leandro Hidalgo — Viedma, Río Negro
+      </div>
     </footer>
+    <script>
+      document.getElementById("footer-year").textContent =
+        "© " +
+        new Date().getFullYear() +
+        " Leandro Hidalgo — Viedma, Río Negro";
+    </script>
   </body>
 </html>
